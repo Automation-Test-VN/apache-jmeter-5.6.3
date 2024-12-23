@@ -1,0 +1,41 @@
+2024-12-23 09:06:46,203 INFO o.a.j.u.JMeterUtils: Setting Locale to en_US
+2024-12-23 09:06:46,213 INFO o.a.j.JMeter: Loading user properties from: user.properties
+2024-12-23 09:06:46,213 INFO o.a.j.JMeter: Loading system properties from: system.properties
+2024-12-23 09:06:46,213 INFO o.a.j.JMeter: Copyright (c) 1998-2024 The Apache Software Foundation
+2024-12-23 09:06:46,213 INFO o.a.j.JMeter: Version 5.6.3
+2024-12-23 09:06:46,213 INFO o.a.j.JMeter: java.version=21.0.5
+2024-12-23 09:06:46,213 INFO o.a.j.JMeter: java.vm.name=Java HotSpot(TM) 64-Bit Server VM
+2024-12-23 09:06:46,213 INFO o.a.j.JMeter: os.name=Windows 10
+2024-12-23 09:06:46,213 INFO o.a.j.JMeter: os.arch=amd64
+2024-12-23 09:06:46,213 INFO o.a.j.JMeter: os.version=10.0
+2024-12-23 09:06:46,213 INFO o.a.j.JMeter: file.encoding=UTF-8
+2024-12-23 09:06:46,213 INFO o.a.j.JMeter: java.awt.headless=null
+2024-12-23 09:06:46,213 INFO o.a.j.JMeter: Max memory     =4200595456
+2024-12-23 09:06:46,213 INFO o.a.j.JMeter: Available Processors =12
+2024-12-23 09:06:46,224 INFO o.a.j.JMeter: Default Locale=English (United States)
+2024-12-23 09:06:46,224 INFO o.a.j.JMeter: JMeter  Locale=English (United States)
+2024-12-23 09:06:46,224 INFO o.a.j.JMeter: JMeterHome=C:\Users\juda\Downloads\apache-jmeter-5.6.3\apache-jmeter-5.6.3
+2024-12-23 09:06:46,224 INFO o.a.j.JMeter: user.dir  =C:\Users\juda\Downloads\apache-jmeter-5.6.3\apache-jmeter-5.6.3\bin
+2024-12-23 09:06:46,224 INFO o.a.j.JMeter: PWD       =C:\Users\juda\Downloads\apache-jmeter-5.6.3\apache-jmeter-5.6.3\bin
+2024-12-23 09:06:46,224 INFO o.a.j.JMeter: IP: 192.168.1.158 Name: DESKTOP-9U5T1HJ FullName: DESKTOP-9U5T1HJ.lan
+2024-12-23 09:06:46,233 INFO o.a.j.JMeter: Loaded icon properties from org/apache/jmeter/images/icon.properties
+2024-12-23 09:06:46,328 INFO o.a.j.JMeterGuiLauncher: Setting LAF to: com.github.weisj.darklaf.DarkLaf:com.github.weisj.darklaf.theme.DarculaTheme
+2024-12-23 09:07:06,283 INFO o.a.j.s.FileServer: Default base='C:\Users\juda\Downloads\apache-jmeter-5.6.3\apache-jmeter-5.6.3\bin'
+2024-12-23 09:07:06,283 INFO o.a.j.g.a.Load: Loading file: D:\Workspaces\checker\blocking-checker\jmeter-data\lu88.jmx
+2024-12-23 09:07:06,283 INFO o.a.j.s.FileServer: Set new base='D:\Workspaces\checker\blocking-checker\jmeter-data'
+2024-12-23 09:07:06,393 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
+2024-12-23 09:07:06,418 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
+2024-12-23 09:07:06,418 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
+2024-12-23 09:07:06,418 INFO o.a.j.s.SaveService: Loading file: D:\Workspaces\checker\blocking-checker\jmeter-data\lu88.jmx
+2024-12-23 09:07:06,438 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2024-12-23 09:07:06,438 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2024-12-23 09:07:06,438 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2024-12-23 09:07:06,438 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2024-12-23 09:07:06,438 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
+2024-12-23 09:07:06,438 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
+2024-12-23 09:07:06,453 INFO o.a.j.p.h.c.CookieManager: Settings: Delete null: true Check: true Allow variable: true Save: false Prefix: COOKIE_
+2024-12-23 09:07:06,573 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
+2024-12-23 09:07:06,573 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to UTF-8
+2024-12-23 09:07:06,573 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
+2024-12-23 09:07:06,573 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
+2024-12-23 09:07:07,487 INFO o.a.j.s.FileServer: Set new base='D:\Workspaces\checker\blocking-checker\jmeter-data'
