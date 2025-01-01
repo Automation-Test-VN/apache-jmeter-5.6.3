@@ -201,10 +201,10 @@
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group">
         <intProp name="ThreadGroup.num_threads">2000</intProp>
-        <intProp name="ThreadGroup.ramp_time">60</intProp>
-        <longProp name="ThreadGroup.duration">1</longProp>
-        <longProp name="ThreadGroup.delay">1</longProp>
+        <intProp name="ThreadGroup.ramp_time">120</intProp>
+        <longProp name="ThreadGroup.duration">1800</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
           <stringProp name="LoopController.loops">1</stringProp>
@@ -219,9 +219,14 @@
               <stringProp name="Argument.value">lu88.com</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
+            <elementProp name="data-path" elementType="Argument">
+              <stringProp name="Argument.name">data-path</stringProp>
+              <stringProp name="Argument.value">${__property(dataPath)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
             <elementProp name="result-path" elementType="Argument">
               <stringProp name="Argument.name">result-path</stringProp>
-              <stringProp name="Argument.value">D:/Workspaces/solar-system/mars/jmeter-reports/</stringProp>
+              <stringProp name="Argument.value">${__property(resultPath)}</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
           </collectionProp>
@@ -230,7 +235,7 @@
         <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Users CSV Data Set Config" enabled="true">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
-          <stringProp name="filename">D:/Workspaces/solar-system/mars/jmeter-data/list-users.csv</stringProp>
+          <stringProp name="filename">${data-path}list-users.csv</stringProp>
           <boolProp name="ignoreFirstLine">true</boolProp>
           <boolProp name="quotedData">false</boolProp>
           <boolProp name="recycle">true</boolProp>
@@ -242,7 +247,7 @@
         <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="QRPays CSV Data Set Config" enabled="true">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
-          <stringProp name="filename">D:\Workspaces\solar-system\mars\jmeter-data\list-qr-pays.csv</stringProp>
+          <stringProp name="filename">${data-path}list-qr-pays.csv</stringProp>
           <boolProp name="ignoreFirstLine">true</boolProp>
           <boolProp name="quotedData">false</boolProp>
           <boolProp name="recycle">true</boolProp>
@@ -254,7 +259,7 @@
         <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CardProviders CSV Data Set Config" enabled="true">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
-          <stringProp name="filename">D:\Workspaces\solar-system\mars\jmeter-data\list-card-providers.csv</stringProp>
+          <stringProp name="filename">${data-path}list-card-providers.csv</stringProp>
           <boolProp name="ignoreFirstLine">true</boolProp>
           <boolProp name="quotedData">false</boolProp>
           <boolProp name="recycle">true</boolProp>
@@ -263,7 +268,16 @@
           <stringProp name="variableNames"></stringProp>
         </CSVDataSet>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Forget Pass (phone) Request">
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults">
+          <intProp name="HTTPSampler.connect_timeout">5000</intProp>
+          <intProp name="HTTPSampler.response_timeout">10000</intProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+        </ConfigTestElement>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Forget Pass (phone) Request" enabled="true">
           <stringProp name="HTTPSampler.domain">lu88.com</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/gw/api/v2/user/get-sms-reset-pass</stringProp>
@@ -431,7 +445,7 @@
           </ResultCollector>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Forget Pass (tele) Request">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Forget Pass (tele) Request" enabled="true">
           <stringProp name="HTTPSampler.domain">lu88.com</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">gw/api/v2/user/get-otp-tele</stringProp>
@@ -592,7 +606,7 @@
           </ResultCollector>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login Request">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login Request" enabled="true">
           <stringProp name="HTTPSampler.domain">${url}</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/gw/api/v2/auth/login</stringProp>
@@ -761,7 +775,7 @@
           </ResultCollector>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Profile Request">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Profile Request" enabled="true">
           <stringProp name="HTTPSampler.domain">${url}</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/gw/api/v2/user/profile</stringProp>
@@ -906,7 +920,7 @@
           </ResultCollector>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Update Pass Request">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Change Pass Request" enabled="true">
           <stringProp name="HTTPSampler.domain">${url}</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/gw/api/v2/user/update-password</stringProp>
@@ -1069,11 +1083,11 @@
                 <connectTime>true</connectTime>
               </value>
             </objProp>
-            <stringProp name="filename">${result-path}update-pass.csv</stringProp>
+            <stringProp name="filename">${result-path}change-pass.csv</stringProp>
           </ResultCollector>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Bet History Request">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Bet History Request" enabled="true">
           <stringProp name="HTTPSampler.domain">${url}</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/gw/api/v2/user/bet-history</stringProp>
@@ -1252,7 +1266,7 @@
           </ResultCollector>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Transaction History Request">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Transaction History Request" enabled="true">
           <stringProp name="HTTPSampler.domain">${url}</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/gw/api/v2/user/transaction-history</stringProp>
@@ -1431,7 +1445,7 @@
           </ResultCollector>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Withdraw Bank List (Transfer) Request">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Withdraw Bank List (Transfer) Request" enabled="true">
           <stringProp name="HTTPSampler.domain">${url}</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/gw/api/v2/payment/withdraw-bank-list</stringProp>
@@ -1592,11 +1606,11 @@
                 <connectTime>true</connectTime>
               </value>
             </objProp>
-            <stringProp name="filename">${result-path}withdraw-transfer.csv</stringProp>
+            <stringProp name="filename">${result-path}withdraw-bank-list-transfer.csv</stringProp>
           </ResultCollector>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Deposit Bank List (PhoneCard) Request">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Deposit Bank List (PhoneCard) Request" enabled="true">
           <stringProp name="HTTPSampler.domain">${url}</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/gw/api/v2/payment/deposit-bank-list</stringProp>
@@ -1757,11 +1771,11 @@
                 <connectTime>true</connectTime>
               </value>
             </objProp>
-            <stringProp name="filename">${result-path}deposit-phonecard.csv</stringProp>
+            <stringProp name="filename">${result-path}deposit-bank-list-phonecard.csv</stringProp>
           </ResultCollector>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Crypto Deposit Request">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Crypto Deposit Request" enabled="true">
           <stringProp name="HTTPSampler.domain">${url}</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/gw/api/v2/payment/crypto/deposit-currency</stringProp>
@@ -1914,11 +1928,11 @@
                 <connectTime>true</connectTime>
               </value>
             </objProp>
-            <stringProp name="filename">${result-path}deposit-cryto.csv</stringProp>
+            <stringProp name="filename">${result-path}deposit-cryto-tokens.csv</stringProp>
           </ResultCollector>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Crypto Withdraw Request">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Crypto Withdraw Request" enabled="true">
           <stringProp name="HTTPSampler.domain">${url}</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/gw/api/v2/payment/crypto/withdraw-currency</stringProp>
@@ -2071,11 +2085,11 @@
                 <connectTime>true</connectTime>
               </value>
             </objProp>
-            <stringProp name="filename">${result-path}withdraw-cryto.csv</stringProp>
+            <stringProp name="filename">${result-path}withdraw-cryto-tokens.csv</stringProp>
           </ResultCollector>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Nicepay100 Request">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Nicepay100 Request" enabled="true">
           <stringProp name="HTTPSampler.domain">${url}</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/gw/api/v2/payment/nicepay/code</stringProp>
@@ -2240,7 +2254,7 @@
           </ResultCollector>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Deposit Bank List (Momo) Request">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Deposit Bank List (Momo) Request" enabled="true">
           <stringProp name="HTTPSampler.domain">${url}</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">gw/api/v2/payment/deposit-bank-list</stringProp>
@@ -2401,11 +2415,11 @@
                 <connectTime>true</connectTime>
               </value>
             </objProp>
-            <stringProp name="filename">${result-path}deposit-momo.csv</stringProp>
+            <stringProp name="filename">${result-path}deposit-bank-list-momo.csv</stringProp>
           </ResultCollector>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Deposit Phone Card Request">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Deposit Phone Card Request" enabled="false">
           <stringProp name="HTTPSampler.domain">${url}</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/gw/api/v2/payment/deposit-phone-card</stringProp>
@@ -2573,7 +2587,7 @@
           </ResultCollector>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Withdraw Bank Request">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Withdraw Bank Request" enabled="false">
           <stringProp name="HTTPSampler.domain">${url}</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/gw/api/v2/payment/withdraw</stringProp>
@@ -2590,7 +2604,7 @@
   &quot;to_bank_name&quot;: &quot;Nguyen Van A&quot;,&#xd;
   &quot;to_bank_no&quot;: &quot;0123456789&quot;,&#xd;
   &quot;amount_withdraw&quot;: 100,&#xd;
-  &quot;verify_phone&quot;: &quot;18734&quot;&#xd;
+  &quot;verify_phone&quot;: &quot;56789&quot;&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -2598,7 +2612,7 @@
           </elementProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="accept" elementType="Header">
                 <stringProp name="Header.name">accept</stringProp>
@@ -2667,7 +2681,7 @@
             </collectionProp>
           </HeaderManager>
           <hashTree/>
-          <ResultCollector guiclass="SimpleDataWriter" testclass="ResultCollector" testname="Simple Data Writer">
+          <ResultCollector guiclass="SimpleDataWriter" testclass="ResultCollector" testname="Simple Data Writer" enabled="true">
             <boolProp name="ResultCollector.error_logging">false</boolProp>
             <objProp>
               <name>saveConfig</name>
@@ -2704,7 +2718,7 @@
             <stringProp name="filename">${result-path}withdraw-bank.csv</stringProp>
           </ResultCollector>
           <hashTree/>
-          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
             <boolProp name="ResultCollector.error_logging">false</boolProp>
             <objProp>
               <name>saveConfig</name>
@@ -2742,7 +2756,7 @@
           </ResultCollector>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Withdraw Cryto Request">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Withdraw Cryto Request" enabled="false">
           <stringProp name="HTTPSampler.domain">${url}</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/gw/api/v2/payment/crypto/withdraw</stringProp>
@@ -2759,7 +2773,7 @@
   &quot;currency&quot;: &quot;USDT&quot;,&#xd;
   &quot;wallet_address&quot;: &quot;T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb&quot;,&#xd;
   &quot;amount_withdraw&quot;: 100,&#xd;
-  &quot;verify_phone&quot;: &quot;18734&quot;,&#xd;
+  &quot;verify_phone&quot;: &quot;56789&quot;,&#xd;
   &quot;network&quot;: &quot;TRC20&quot;&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
@@ -2837,7 +2851,7 @@
             </collectionProp>
           </HeaderManager>
           <hashTree/>
-          <ResultCollector guiclass="SimpleDataWriter" testclass="ResultCollector" testname="Simple Data Writer">
+          <ResultCollector guiclass="SimpleDataWriter" testclass="ResultCollector" testname="Simple Data Writer" enabled="true">
             <boolProp name="ResultCollector.error_logging">false</boolProp>
             <objProp>
               <name>saveConfig</name>
@@ -2912,7 +2926,7 @@
           </ResultCollector>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Withdraw PhoneCard Request">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Withdraw PhoneCard Request" enabled="false">
           <stringProp name="HTTPSampler.domain">${url}</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/gw/api/v2/payment/withdraw-phone-card</stringProp>
@@ -3005,7 +3019,7 @@
             </collectionProp>
           </HeaderManager>
           <hashTree/>
-          <ResultCollector guiclass="SimpleDataWriter" testclass="ResultCollector" testname="Simple Data Writer">
+          <ResultCollector guiclass="SimpleDataWriter" testclass="ResultCollector" testname="Simple Data Writer" enabled="true">
             <boolProp name="ResultCollector.error_logging">false</boolProp>
             <objProp>
               <name>saveConfig</name>
@@ -3080,7 +3094,7 @@
           </ResultCollector>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Receive GiftCode Request">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Receive GiftCode Request" enabled="true">
           <stringProp name="HTTPSampler.domain">${url}</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/gw/api/v2/user/receive-gift-code/NoExistCode</stringProp>

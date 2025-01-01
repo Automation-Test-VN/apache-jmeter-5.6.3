@@ -44,7 +44,7 @@ rem   GC_ALGO     - (Optional) JVM garbage collector options
 rem                 Defaults to '-XX:+UseG1GC -XX:MaxGCPauseMillis=100 -XX:G1ReservePercent=20'
 rem
 rem   HEAP        - (Optional) JVM memory settings used when starting JMeter
-rem                 Defaults to '-Xms1g -Xmx1g -XX:MaxMetaspaceSize=256m'
+rem                 Defaults to '-Xms2g -Xmx4g -XX:MaxMetaspaceSize=512m'
 rem
 rem   =====================================================
 
@@ -148,7 +148,7 @@ rem http://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html
 if not defined HEAP (
     rem See the unix startup file for the rationale of the following parameters,
     rem including some tuning recommendations
-    set HEAP=-Xms1g -Xmx1g -XX:MaxMetaspaceSize=256m
+    set HEAP=-Xms2g -Xmx4g -XX:MaxMetaspaceSize=512m
 )
 
 rem Uncomment this to generate GC verbose file with Java prior to 9
